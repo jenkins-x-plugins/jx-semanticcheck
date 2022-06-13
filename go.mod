@@ -1,6 +1,6 @@
 module github.com/spring-financial-group/jx-semanticcheck
 
-go 1.18
+go 1.17
 
 require (
 	github.com/antham/chyle v1.14.0

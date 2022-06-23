@@ -1,13 +1,13 @@
 package cmd
 
 import (
+	"github.com/jenkins-x-plugins/jx-semanticcheck/pkg/cmd/check"
+	"github.com/jenkins-x-plugins/jx-semanticcheck/pkg/cmd/version"
+	"github.com/jenkins-x-plugins/jx-semanticcheck/pkg/rootcmd"
 	"github.com/jenkins-x/jx-helpers/v3/pkg/cobras"
 	"github.com/jenkins-x/jx-helpers/v3/pkg/options"
 	"github.com/jenkins-x/jx-logging/v3/pkg/log"
 	"github.com/spf13/cobra"
-	"github.com/spring-financial-group/jx-semanticcheck/pkg/cmd/check"
-	"github.com/spring-financial-group/jx-semanticcheck/pkg/cmd/version"
-	"github.com/spring-financial-group/jx-semanticcheck/pkg/rootcmd"
 )
 
 // Options a few common options we tend to use in command line tools

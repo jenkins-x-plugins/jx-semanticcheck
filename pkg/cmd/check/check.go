@@ -2,6 +2,7 @@ package check
 
 import (
 	"fmt"
+	"github.com/jenkins-x-plugins/jx-semanticcheck/pkg/helpers"
 	"github.com/jenkins-x/jx-helpers/v3/pkg/cmdrunner"
 	"github.com/jenkins-x/jx-helpers/v3/pkg/cobras/helper"
 	"github.com/jenkins-x/jx-helpers/v3/pkg/cobras/templates"
@@ -12,7 +13,6 @@ import (
 	"github.com/jenkins-x/jx-logging/v3/pkg/log"
 	"github.com/pkg/errors"
 	"github.com/spf13/cobra"
-	"github.com/spring-financial-group/jx-semanticcheck/pkg/helpers"
 	"strings"
 )
 

@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/spring-financial-group/jx-semanticcheck/cmd/app"
+	"github.com/jenkins-x-plugins/jx-semanticcheck/cmd/app"
 	"os"
 )
 

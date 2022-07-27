@@ -1,0 +1,39 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  creationTimestamp: null
+  name: pullrequest
+spec:
+  pipelineSpec:
+    tasks:
+      - name: from-build-pack
+        resources: {}
+        taskSpec:
+          metadata: {}
+          stepTemplate:
+            image: uses:jenkins-x/jx3-pipeline-catalog/tasks/go-plugin/pullrequest.yaml@versionStream
+            name: ""
+            resources: {}
+            workingDir: /workspace/source
+          steps:
+            - image: uses:jenkins-x/jx3-pipeline-catalog/tasks/git-clone/git-clone-pr.yaml@versionStream
+              name: ""
+              resources: {}
+            - name: jx-variables
+            - name: build-make-linux
+              resources: {}
+            - name: build-make-test
+              resources: {}
+            - name: build-container-build
+              resources: {}
+            - image: alpine:3.16
+              name: semantic-check
+              resources: {}
+              script: |
+                #!/usr/bin/env sh
+                chmod +x build/jx-semanticcheck
+                ./build/jx-semanticcheck check
+  podTemplate: {}
+  serviceAccountName: tekton-bot
+  timeout: 1h0m0s
+status: {}

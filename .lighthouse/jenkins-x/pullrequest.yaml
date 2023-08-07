@@ -31,8 +31,7 @@ spec:
               resources: {}
               script: |
                 #!/usr/bin/env sh
-                chmod +x build/jx-semanticcheck
-                ./build/jx-semanticcheck check
+                ./build/linux/jx-semanticcheck check
   podTemplate: {}
   serviceAccountName: tekton-bot
   timeout: 1h0m0s

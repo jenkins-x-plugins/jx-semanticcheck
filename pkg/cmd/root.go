@@ -20,7 +20,7 @@ func Main() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   rootcmd.TopLevelCommand,
 		Short: "Command for working with Semantic Commits",
-		Run: func(cmd *cobra.Command, args []string) {
+		Run: func(cmd *cobra.Command, _ []string) {
 			err := cmd.Help()
 			if err != nil {
 				log.Logger().Errorf(err.Error())

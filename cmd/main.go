@@ -1,8 +1,9 @@
 package main
 
 import (
-	"github.com/jenkins-x-plugins/jx-semanticcheck/cmd/app"
 	"os"
+
+	"github.com/jenkins-x-plugins/jx-semanticcheck/cmd/app"
 )
 
 // Entrypoint for the command

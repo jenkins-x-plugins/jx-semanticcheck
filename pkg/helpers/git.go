@@ -1,8 +1,10 @@
 package helpers
 
 import (
+	"fmt"
+
 	"github.com/jenkins-x/jx-helpers/v3/pkg/gitclient"
-	"github.com/pkg/errors"
+
 	"strings"
 )
 
@@ -23,7 +25,7 @@ func GetNewCommits(gitter gitclient.Interface, dir string) ([]*Commit, error) {
 	// Gets a list of the commits on the current branch and whether they are new
 	out, err := gitter.Command(dir, "cherry", defaultBranch)
 	if err != nil {
-		return nil, errors.Wrapf(err, "running git")
+		return nil, fmt.Errorf("running git: %w", err)
 	}
 	split := strings.Split(out, "\n")
 
@@ -39,9 +41,9 @@ func GetNewCommits(gitter gitclient.Interface, dir string) ([]*Commit, error) {
 	return GetCommits(gitter, dir, newCommits)
 }
 
-func GetCommits(gitter gitclient.Interface, dir string, SHAs []string) ([]*Commit, error) {
+func GetCommits(gitter gitclient.Interface, dir string, shas []string) ([]*Commit, error) {
 	var commits []*Commit
-	for _, sha := range SHAs {
+	for _, sha := range shas {
 		commit, err := GetCommit(gitter, dir, sha)
 		if err != nil {
 			return nil, err
@@ -52,11 +54,11 @@ func GetCommits(gitter gitclient.Interface, dir string, SHAs []string) ([]*Commi
 }
 
 // GetCommit uses "git show" to get information about a specific commit
-func GetCommit(gitter gitclient.Interface, dir string, SHA string) (*Commit, error) {
-	out, err := gitter.Command(dir, "show", "--quiet", SHA,
+func GetCommit(gitter gitclient.Interface, dir, sha string) (*Commit, error) {
+	out, err := gitter.Command(dir, "show", "--quiet", sha,
 		"--format=%H%n%s%n%ai")
 	if err != nil {
-		return nil, errors.Wrapf(err, "running git")
+		return nil, fmt.Errorf("running git: %w", err)
 	}
 	split := strings.Split(out, "\n")
 	return &Commit{
@@ -69,7 +71,7 @@ func GetCommit(gitter gitclient.Interface, dir string, SHA string) (*Commit, err
 func getDefaultBranchName(gitter gitclient.Interface, dir string) (string, error) {
 	out, err := gitter.Command(dir, "symbolic-ref", "refs/remotes/origin/HEAD", "--short")
 	if err != nil {
-		return "", errors.Wrapf(err, "running git")
+		return "", fmt.Errorf("running git: %w", err)
 	}
 	return out, nil
 }

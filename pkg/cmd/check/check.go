@@ -2,6 +2,7 @@ package check
 
 import (
 	"fmt"
+
 	"github.com/jenkins-x-plugins/jx-semanticcheck/pkg/helpers"
 	"github.com/jenkins-x/jx-helpers/v3/pkg/cmdrunner"
 	"github.com/jenkins-x/jx-helpers/v3/pkg/cobras/helper"
@@ -10,9 +11,10 @@ import (
 	"github.com/jenkins-x/jx-helpers/v3/pkg/gitclient/cli"
 	"github.com/jenkins-x/jx-helpers/v3/pkg/options"
 	"github.com/jenkins-x/jx-logging/v3/pkg/log"
-	"github.com/pkg/errors"
-	"github.com/spf13/cobra"
+
 	"strings"
+
+	"github.com/spf13/cobra"
 )
 
 // Options contains the command line flags
@@ -45,7 +47,7 @@ func NewCmdCheckSemantics() (*cobra.Command, *Options) {
 		Short:   "Checks for whether the commits in a PR are Conventional Commits",
 		Long:    cmdLong,
 		Example: cmdExample,
-		Run: func(cmd *cobra.Command, args []string) {
+		Run: func(_ *cobra.Command, _ []string) {
 			err := o.Run()
 			helper.CheckErr(err)
 		},
@@ -58,12 +60,12 @@ func NewCmdCheckSemantics() (*cobra.Command, *Options) {
 func (o *Options) Run() error {
 	err := o.Validate()
 	if err != nil {
-		return errors.Wrapf(err, "failed to validate")
+		return fmt.Errorf("failed to validate: %w", err)
 	}
 
 	commits, err := helpers.GetNewCommits(o.GitClient, o.Dir)
 	if err != nil {
-		return errors.Wrapf(err, "failed to get commits")
+		return fmt.Errorf("failed to get commits: %w", err)
 	}
 
 	var failedCommits int
@@ -94,7 +96,7 @@ func (o *Options) Run() error {
 func (o *Options) Validate() error {
 	err := o.BaseOptions.Validate()
 	if err != nil {
-		return errors.Wrapf(err, "failed to validate base options")
+		return fmt.Errorf("failed to validate base options: %w", err)
 	}
 
 	if o.GitClient == nil {

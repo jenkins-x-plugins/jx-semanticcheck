@@ -2,6 +2,7 @@ package check_test
 
 import (
 	"fmt"
+
 	"github.com/jenkins-x/jx-helpers/v3/pkg/gitclient"
 )
 
@@ -30,7 +31,7 @@ func (m *mockGitClient) Command(dir string, args ...string) (string, error) {
 	return "", fmt.Errorf("command not mocked with Dir %s and args %v", dir, args)
 }
 
-func isArrayEqual(args1 []string, args2 []string) bool {
+func isArrayEqual(args1, args2 []string) bool {
 	if len(args1) != len(args2) {
 		return false
 	}
@@ -44,7 +45,7 @@ func isArrayEqual(args1 []string, args2 []string) bool {
 	return true
 }
 
-func (m *mockGitClient) addMockedCommand(dir string, expectedStringReturn string, expectedErrorReturn error, args ...string) {
+func (m *mockGitClient) addMockedCommand(dir, expectedStringReturn string, expectedErrorReturn error, args ...string) {
 	if m.mockedCommands == nil {
 		m.mockedCommands = []mockedCommand{}
 	}

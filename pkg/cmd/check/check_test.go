@@ -2,11 +2,12 @@ package check_test
 
 import (
 	"fmt"
+	"testing"
+
 	"github.com/jenkins-x-plugins/jx-semanticcheck/pkg/cmd/check"
 	"github.com/jenkins-x-plugins/jx-semanticcheck/pkg/helpers"
 	"github.com/jenkins-x/jx-helpers/v3/pkg/options"
 	"github.com/stretchr/testify/assert"
-	"testing"
 )
 
 type commitWrapper struct {

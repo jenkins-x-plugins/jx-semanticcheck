@@ -8,6 +8,7 @@ spec:
     tasks:
       - name: from-build-pack
         resources: {}
+        timeout: 1h30m0s
         taskSpec:
           metadata: {}
           stepTemplate:
@@ -26,14 +27,13 @@ spec:
               resources: {}
             - name: build-container-build
               resources: {}
-            - image: alpine:3.16
+            - image: alpine/git:v2.47.1
               name: semantic-check
               resources: {}
               script: |
                 #!/usr/bin/env sh
-                chmod +x build/jx-semanticcheck
-                ./build/jx-semanticcheck check
+                ./build/linux/jx-semanticcheck check
   podTemplate: {}
   serviceAccountName: tekton-bot
-  timeout: 1h0m0s
+  timeout: 1h30m0s
 status: {}

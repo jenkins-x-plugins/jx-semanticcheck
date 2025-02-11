@@ -8,6 +8,7 @@ spec:
     tasks:
       - name: from-build-pack
         resources: {}
+        timeout: 1h30m0s
         taskSpec:
           metadata: {}
           stepTemplate:
@@ -34,5 +35,5 @@ spec:
                 ./build/linux/jx-semanticcheck check
   podTemplate: {}
   serviceAccountName: tekton-bot
-  timeout: 1h0m0s
+  timeout: 1h30m0s
 status: {}

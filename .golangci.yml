@@ -90,6 +90,6 @@ linters:
     - govet
 
 run:
-  timeout: 30m
+  timeout: 1h30m
 # golangci.com configuration
 # https://github.com/golangci/golangci/wiki/Configuration

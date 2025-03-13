@@ -5,7 +5,7 @@ go 1.23.0
 toolchain go1.23.2
 
 require (
-	github.com/jenkins-x/jx-helpers/v3 v3.9.3
+	github.com/jenkins-x/jx-helpers/v3 v3.9.4
 	github.com/jenkins-x/jx-logging/v3 v3.0.17
 	github.com/spf13/cobra v1.8.1
 	github.com/stretchr/testify v1.10.0

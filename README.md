@@ -6,5 +6,5 @@
 `jx-semanticcheck` is a simple command line tool for checking that the commits in a pull request follow the
 [Conventional Commits specification](https://www.conventionalcommits.org/en/v1.0.0/#specification).
 
-Designed to be used in conjunction with the semantic versioning of [Jenkins X Release Version](https://github.com/jenkins-x-plugins/jx-release-version)
+Designed to be used in conjunction with the semantic versioning of [JayeX Release Version](https://github.com/jenkins-x-plugins/jx-release-version)
 to provide meaningful and consistent releases across all services.

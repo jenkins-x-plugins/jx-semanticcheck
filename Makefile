@@ -153,9 +153,7 @@ importfmt: get-fmt-deps
 
 .PHONY: lint
 lint: ## Lint the code
-	./hack/gofmt.sh
-	./hack/linter.sh
-	./hack/generate.sh
+	golangci-lint run
 
 .PHONY: all
 all: fmt build test lint

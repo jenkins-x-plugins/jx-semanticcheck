@@ -3,7 +3,7 @@ module github.com/jenkins-x-plugins/jx-semanticcheck
 go 1.26.3
 
 require (
-	github.com/jenkins-x/jx-helpers/v3 v3.11.1
+	github.com/jenkins-x/jx-helpers/v3 v3.11.4
 	github.com/jenkins-x/jx-logging/v3 v3.1.6
 	github.com/spf13/cobra v1.10.2
 	github.com/stretchr/testify v1.11.1
@@ -58,9 +58,9 @@ require (
 	github.com/xeipuuv/gojsonschema v1.2.0 // indirect
 	go.yaml.in/yaml/v2 v2.4.4 // indirect
 	go.yaml.in/yaml/v3 v3.0.4 // indirect
-	golang.org/x/net v0.54.0 // indirect
+	golang.org/x/net v0.55.0 // indirect
 	golang.org/x/oauth2 v0.36.0 // indirect
-	golang.org/x/sys v0.44.0 // indirect
+	golang.org/x/sys v0.45.0 // indirect
 	golang.org/x/term v0.43.0 // indirect
 	golang.org/x/text v0.37.0 // indirect
 	golang.org/x/time v0.15.0 // indirect
